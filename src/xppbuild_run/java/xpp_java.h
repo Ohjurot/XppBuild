@@ -5,7 +5,6 @@
 #include "../util/timer.h"
 #include "../build_env.h"
 
-#include <argparse/argparse.hpp>
 #include <json/json.h>
 #include <boost/process.hpp>
 
@@ -15,5 +14,5 @@
 namespace xpp::run::java
 {
     // Java build main
-    int build_java_config(const argparse::ArgumentParser& args, const Json::Value& build_config, BuildEnv& env);
+    int build_java_config(const Json::Value& build_config, BuildEnv& env);
 }

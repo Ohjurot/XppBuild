@@ -1,6 +1,6 @@
 #include "xpp_run.h"
 
-int xpp::run::app_main(const argparse::ArgumentParser& args)
+int xpp::run::app_main(const boost::program_options::variables_map& args)
 {
     int return_code = -1;
     std::filesystem::path json_file_path;
@@ -9,7 +9,7 @@ int xpp::run::app_main(const argparse::ArgumentParser& args)
     std::ostream* out_stream = &std::cout;
     util::NullBuffer null_buffer;
     std::ostream null_stream(&null_buffer);
-    if (args["-s"] == true)
+    if (args.count("silent"))
     {
         out_stream = &null_stream;
     }
@@ -25,7 +25,7 @@ int xpp::run::app_main(const argparse::ArgumentParser& args)
     };
 
     // Open json file
-    json_file_path = args.get<std::string>("-b");
+    json_file_path = args["buildfile"].as<std::string>();
     build_result["build_file"] = json_file_path.generic_string();
 
     if (std::filesystem::exists(json_file_path))
@@ -47,7 +47,7 @@ int xpp::run::app_main(const argparse::ArgumentParser& args)
                     const Json::Value java_build_config = build_config.get("java", Json::nullValue);
                     if (java_build_config != Json::nullValue)
                     {
-                        return_code = java::build_java_config(args, java_build_config, env);
+                        return_code = java::build_java_config(java_build_config, env);
                     }
                     else
                     {

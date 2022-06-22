@@ -1,6 +1,6 @@
 #include "xpp_java.h"
 
-int xpp::run::java::build_java_config(const argparse::ArgumentParser& args, const Json::Value& build_config, BuildEnv& env)
+int xpp::run::java::build_java_config(const Json::Value& build_config, BuildEnv& env)
 {
     int return_code = -1;
 

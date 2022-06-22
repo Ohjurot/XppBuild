@@ -9,6 +9,7 @@ function xpp_cpp_project(src_dir_name)
     debugdir "%{wks.location}/app"
 
     linkoptions { conan_exelinkflags }
+    staticruntime "Off"
 
     files { 
         "%{prj.location}/**.h", 

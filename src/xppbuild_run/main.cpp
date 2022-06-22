@@ -1,6 +1,6 @@
 #include "xpp_run.h"
 
-#include <argparse/argparse.hpp>
+#include <boost/program_options.hpp>
 
 #include <iostream>
 
@@ -8,34 +8,35 @@ int main(int argc, char** argv)
 {
     int return_code = -1;
 
-    // Create argument parser
-    argparse::ArgumentParser args("xppbuild-run", "1.0");
-    args.add_description("");
-
-    // Setup arguments
-    args.add_argument<std::string>("-b", "--buildfile")
-        .help("Specifies the build description that shall be run")
-        .default_value<std::string>("build.json")
-        .required()
-        ;
-    args.add_argument("-s", "--silent")
-        .help("Disables application output")
-        .default_value(false)
-        .implicit_value(true)
+    // Declare the supported options.
+    boost::program_options::options_description allowed_options("Allowed options");
+    allowed_options.add_options()
+        ("help", "produce this help message")
+        ("buildfile", boost::program_options::value<std::string>()->default_value("build.json")->required(), "Specifies the build description that shall be run")
+        ("silent", "Disables application output")
         ;
 
-    // Parse command line and run app
-    try 
+    // Handle errors and call main
+    try
     {
-        args.parse_args(argc, argv);
-        return_code = xpp::run::app_main(args);
+        // Parse cmds
+        boost::program_options::variables_map args;
+        boost::program_options::store(boost::program_options::parse_command_line(argc, argv, allowed_options), args);
+        if (args.count("help"))
+        {
+            std::cout << allowed_options;
+        }
+        else
+        {
+            // rais and execute
+            boost::program_options::notify(args);
+            return_code = xpp::run::app_main(args);
+        }
     }
     catch (std::exception& ex)
     {
-        // Print errors occurred during parsing
         std::cout << ex.what();
     }
-
     return return_code;
 }
 

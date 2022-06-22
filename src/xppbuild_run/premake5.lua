@@ -8,4 +8,4 @@ project "XppBuild-Run"
     defines { "XPP_BUILD_RUN" }
 
     -- Customize debugging
-    debugargs { "-b", "java.build.jsonc" }
+    debugargs { "--buildfile", "java.build.jsonc" }
