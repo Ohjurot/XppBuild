@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../util/exe.h"
-#include "../util/stream.h"
-#include "../util/timer.h"
+#include "util/exe.h"
+#include "util/stream.h"
+#include "util/timer.h"
 #include "../build_env.h"
 
 #include <json/json.h>

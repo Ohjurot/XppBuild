@@ -5,6 +5,9 @@ int xpp::run::app_main(const boost::program_options::variables_map& args)
     int return_code = -1;
     std::filesystem::path json_file_path;
 
+    // Measure time
+    util::Timer timer;
+
     // Evaluate silent
     std::ostream* out_stream = &std::cout;
     util::NullBuffer null_buffer;
@@ -26,7 +29,7 @@ int xpp::run::app_main(const boost::program_options::variables_map& args)
 
     // Open json file
     json_file_path = args["buildfile"].as<std::string>();
-    build_result["build_file"] = json_file_path.generic_string();
+    env.result["build_file"] = json_file_path.generic_string();
 
     if (std::filesystem::exists(json_file_path))
     {
@@ -67,7 +70,7 @@ int xpp::run::app_main(const boost::program_options::variables_map& args)
             }
             else 
             {
-                env.err << "The build configuration " << json_file_path << " does not speicify a build type!\n";
+                env.err << "The build configuration " << json_file_path << " does not specify a build type!\n";
             }
         }
     }
@@ -80,6 +83,10 @@ int xpp::run::app_main(const boost::program_options::variables_map& args)
     env.result["stdout"] = memory_out_stream.str();
     env.result["stderr"] = memory_err_stream.str();
     env.result["return_code"] = return_code;
+
+    // Build time
+    timer.stop();
+    env.result["build_time"] = timer.duration_float_seconds();
 
     // Compute build result and print to requested out stream
     Json::FastWriter json_writer;

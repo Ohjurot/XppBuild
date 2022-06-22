@@ -1,6 +1,5 @@
 -- Basic C++ project settings
 function xpp_cpp_project(src_dir_name)
-    kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
     targetdir "%{wks.location}/bin/%{cfg.buildcfg}/"

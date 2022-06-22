@@ -9,3 +9,4 @@ workspace "XppBuild"
 
     -- Required projects
     include("src/xppbuild_run/premake5.lua")
+    include("src/xppbuild_common/premake5.lua")

@@ -4,9 +4,6 @@ int xpp::run::java::build_java_config(const Json::Value& build_config, BuildEnv&
 {
     int return_code = -1;
 
-    // Measure time
-    util::Timer timer;
-
     // Echoing
     env.out << "Performing Java build..." << std::endl;
     env.result["build_type"] = "java";
@@ -173,10 +170,6 @@ int xpp::run::java::build_java_config(const Json::Value& build_config, BuildEnv&
         env.err << "Error in java build configuration: Requires all of the following parameters "
                 << "[string: jdk_path, uint: java_version, string: jar_output, string: class_output, string: java_src_root, array: java_src, array: java_res, array: class_path]\n";
     }
-
-    // Build time
-    timer.stop();
-    env.result["build_time"] = timer.duration_float_seconds();
 
     // Write note
     env.out << "Java build " << (return_code == 0 ? "succeeded" : "failed") << " with code " << return_code << "\n";

@@ -28,7 +28,7 @@ int main(int argc, char** argv)
         }
         else
         {
-            // rais and execute
+            // raise and execute
             boost::program_options::notify(args);
             return_code = xpp::run::app_main(args);
         }
