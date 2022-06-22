@@ -1,0 +1,10 @@
+{
+    // Generic arguments
+    "type": "cpp\\msvc",
+    
+    // Java build container
+    "cpp": {
+        // Path to the MSVC toolchain
+        "toolchain" : "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
+    }   
+}

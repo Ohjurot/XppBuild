@@ -1,0 +1,22 @@
+# Conan generated
+/conan.lock
+/conanbuildinfo.premake.lua
+/conanbuildinfo.txt
+/conaninfo.txt
+/graph_info.json
+
+# Visual studio
+/.vs
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+# Binary output
+/bin
+/temp
+/app/java/java_test.jar
+
+# Java jdk and obj files
+/app/jdk
+/app/java/java_obj

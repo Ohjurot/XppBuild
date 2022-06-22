@@ -1,0 +1,38 @@
+{
+    // Generic arguments
+    "type": "java",
+    
+    // Java build container
+    "java": {
+        // Path to jdk
+        "jdk_path": "jdk",
+        
+        // Explicit java version
+        "java_version": 17,
+
+        // Jar output file
+        "jar_output": "java/java_test.jar",
+
+        // Directory where classes should be placed
+        "class_output": "java/java_obj",
+
+        // Source base path
+        "java_src_root": "java/java_src",
+
+        // Files that will be compiled prior to be packed to zip
+        "java_src": [
+            "com/test/main.java", 
+            "com/test/util.java"
+        ],
+
+        // Files that will be pack into the jar but will not be compiled
+        "java_res": [
+            "com/test/dummy.txt"
+        ],
+
+        // Java class path for compiler
+        "class_path": [
+            "java/lwjgl-xxhash-3.3.1.jar"
+        ]
+    }   
+}
