@@ -1,0 +1,89 @@
+{
+    // Generic arguments
+    "type": "cpp\\msvc",
+    
+    // Java build container
+    "cpp": {
+        // Source files
+        "source_files": [
+            "",
+            ""
+        ],
+
+        // Include directories
+        "include_dirs": [
+            "",
+            ""
+        ],
+
+        // Intermediate directory
+        "obj_directory": "",
+
+        // C++ preprocessor macros
+        "preprocessor_macros": [
+            "DEBUG",
+            "WIN32"
+        ],
+
+        // Enables debugging
+        "debug_build": false,
+
+        // Code generation
+        "code_generation": {
+            // Architecture
+            "architecture": "x64", // x32, x64
+            // Enabled SIMD code generation
+            "enable_simd": null, // IA32 (x32), SSE (x32), SSE2 (x32), AVX (x32, x64), AVX2 (x32, x64), AVX512 (x32, x64)
+            // Exception behaviour
+            "exception": "std", // none, std (Std C++), std_strict (Strict STD C++)
+            // Floating-point model
+            "fp_model": "precise", // precise, strict, fast 
+            // Prevents string duplicates
+            "string_pooling": true,
+            // Optimization
+            "optimization": "none", // none, speed, size
+            // Enable Run-Time Type Information
+            "rtti": true
+        },
+
+        // PCH
+        "pch": null, // Name of the PCH headers to use
+
+        // C++ language features
+        "language": {
+            // C++ standard
+            "cpp_version": "c++20", // c11, c17, c++14, c++17, c++20, latest
+            // Make the compiler more permissive
+            "permissive": false, 
+            // Enables C++ coroutine
+            "coroutine": false,
+            // Enabled C++ modules
+            "modules": false
+        } 
+    },
+    
+    // MSVC Specific behavior
+    "msvc": {
+        // Path to the MSVC toolchain
+        "toolchain" : "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64",
+
+        // UWP Build
+        "build_for_uwp": false,
+        // Common Language Runtime
+        "clr": null, // netcore, nostdlib, pure, safe, noAssembly, initialAppDomain 
+        // false= /MD /MDd true= /MT /MTd
+        "static_runtime": false
+        
+    },
+
+    // Options for clang
+    "clang": {
+        // Path to the LLVM toolchain
+        "toolchain" : "C:\\Program Files\\LLVM\\bin",
+
+        // MSVC mode
+        "msvc_mode": false,
+        "msvc_version": null, // Default to clang default
+
+    }
+}
