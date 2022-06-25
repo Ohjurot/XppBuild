@@ -13,4 +13,4 @@ project "XppBuild-Run"
     defines { "XPP_BUILD_RUN" }
 
     -- Customize debugging
-    debugargs { "--buildfile", "java.build.jsonc" }
+    debugargs { "--buildfile", "cpp.build.jsonc" }

@@ -1,6 +1,6 @@
 #include "cpp_build_config.h"
 
-xpp::run::cpp::CppBuildConfig xpp::run::cpp::JsonToCppBuildInfo(const Json::Value& config)
+xpp::run::cpp::CppBuildConfig xpp::run::cpp::json_to_cpp_build_info(const Json::Value& config)
 {
     CppBuildConfig build_config;
 
@@ -100,7 +100,7 @@ xpp::run::cpp::CppBuildConfig xpp::run::cpp::JsonToCppBuildInfo(const Json::Valu
         const Json::Value fp_model_v = code_generation_v.get("fp_model", Json::nullValue);
         if (fp_model_v != Json::nullValue && fp_model_v.isString())
         {
-            std::string fp_model_s = exception_v.asString();
+            std::string fp_model_s = fp_model_v.asString();
             if (fp_model_s == "precise")
                 build_config.floatingpoint_mode = FPMode::percise;
             else if (fp_model_s == "strict")

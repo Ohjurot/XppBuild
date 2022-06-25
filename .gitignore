@@ -16,7 +16,9 @@
 /bin
 /temp
 /app/java/java_test.jar
-
-# Java jdk and obj files
-/app/jdk
 /app/java/java_obj
+/app/cpp/obj
+
+# Java jdk 
+/app/jdk
+

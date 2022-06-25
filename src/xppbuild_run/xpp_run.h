@@ -3,6 +3,9 @@
 #include "util/stream.h"
 #include "util/json.h"
 #include "java/xpp_java.h"
+#include "cpp/cpp_provider.h"
+#include "cpp/cpp_registry.h"
+#include "cpp/cpp_build_config.h"
 #include "build_env.h"
 
 #include <boost/program_options.hpp>

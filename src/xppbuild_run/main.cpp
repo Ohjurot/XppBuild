@@ -11,9 +11,19 @@ int main(int argc, char** argv)
     // Declare the supported options.
     boost::program_options::options_description allowed_options("Allowed options");
     allowed_options.add_options()
-        ("help", "produce this help message")
-        ("buildfile", boost::program_options::value<std::string>()->default_value("build.json")->required(), "Specifies the build description that shall be run")
-        ("silent", "Disables application output")
+        (
+            "help", 
+            "produce this help message"
+        )
+        (
+            "buildfile", 
+            boost::program_options::value<std::string>()->default_value("build.json")->required(), 
+            "Specifies the build file that shall be compiled"
+        )
+        (
+            "silent", 
+            "Disables application output"
+        )
         ;
 
     // Handle errors and call main

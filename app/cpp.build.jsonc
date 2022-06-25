@@ -2,27 +2,26 @@
     // Generic arguments
     "type": "cpp\\msvc",
     
-    // Java build container
+    // Cpp build container
     "cpp": {
         // Source files
         "source_files": [
-            "",
-            ""
+            "cpp/src/main.cpp",
+            "cpp/src/util.cpp"
         ],
 
         // Include directories
         "include_dirs": [
-            "",
-            ""
+            "cpp/src/"
         ],
 
         // Intermediate directory
-        "obj_directory": "",
+        "obj_directory": "./cpp/obj/",
 
         // C++ preprocessor macros
         "preprocessor_macros": [
-            "DEBUG",
-            "WIN32"
+            "NDEBUG",
+            "MY_OFF=1.2"
         ],
 
         // Enables debugging
@@ -54,7 +53,7 @@
             // C++ standard
             "cpp_version": "c++20", // c11, c17, c++14, c++17, c++20, latest
             // Make the compiler more permissive
-            "permissive": false, 
+            "permissive": true, 
             // Enables C++ coroutine
             "coroutine": false,
             // Enabled C++ modules
@@ -65,15 +64,15 @@
     // MSVC Specific behavior
     "msvc": {
         // Path to the MSVC toolchain
-        "toolchain" : "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64",
+        "toolchain" : "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.29.30133",
+        "win_sdk": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22567.0",
 
         // UWP Build
         "build_for_uwp": false,
         // Common Language Runtime
         "clr": null, // netcore, nostdlib, pure, safe, noAssembly, initialAppDomain 
         // false= /MD /MDd true= /MT /MTd
-        "static_runtime": false
-        
+        "static_runtime": false  
     },
 
     // Options for clang
@@ -83,7 +82,7 @@
 
         // MSVC mode
         "msvc_mode": false,
-        "msvc_version": null, // Default to clang default
+        "msvc_version": null // Default to clang default
 
     }
 }

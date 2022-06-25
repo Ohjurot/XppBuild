@@ -103,5 +103,5 @@ namespace xpp::run::cpp
     };
 
     // Parses a json configuration to the correct build configuration
-    CppBuildConfig JsonToCppBuildInfo(const Json::Value& config);
+    CppBuildConfig json_to_cpp_build_info(const Json::Value& config);
 }
