@@ -33,6 +33,50 @@ xpp::run::cpp::CppBuildConfig xpp::run::cpp::json_to_cpp_build_info(const Json::
     // Object directory
     build_config.intermediate_dir = config.get("obj_directory", "").asString();
 
+    // Output file
+    build_config.output_file = config.get("output", "out").asString();
+
+    // Output type
+    const Json::Value output_type_v = config.get("output_type", Json::nullValue);
+    if (output_type_v != Json::nullValue && output_type_v.isString())
+    {
+        std::string output_type_s = output_type_v.asString();
+        if (output_type_s == "app\\console")
+            build_config.output_type = OutputType::ConsoleApp;
+        else if (output_type_s == "app\\native")
+            build_config.output_type = OutputType::NativeApp;
+        else if (output_type_s == "lib\\static")
+            build_config.output_type = OutputType::StaticLib;
+        else if (output_type_s == "lib\\dynamic")
+            build_config.output_type = OutputType::DynamicLib;
+    }
+
+    // Lib dirs
+    const Json::Value lib_path_v = config.get("lib_path", Json::nullValue);
+    if (lib_path_v != Json::nullValue && lib_path_v.isArray())
+    {
+        for (auto it = lib_path_v.begin(); it != lib_path_v.end(); ++it)
+        {
+            if (it->isString())
+            {
+                build_config.lib_dirs.push_back(it->asString());
+            }
+        }
+    }
+
+    // Lib links
+    const Json::Value lib_links_v = config.get("lib_links", Json::nullValue);
+    if (lib_links_v != Json::nullValue && lib_links_v.isArray())
+    {
+        for (auto it = lib_links_v.begin(); it != lib_links_v.end(); ++it)
+        {
+            if (it->isString())
+            {
+                build_config.lib_links.push_back(it->asString());
+            }
+        }
+    }
+
     // Preprocessor macro
     const Json::Value preprocessor_macros_v = config.get("preprocessor_macros", Json::nullValue);
     if (preprocessor_macros_v != Json::nullValue && preprocessor_macros_v.isArray())
@@ -171,6 +215,32 @@ xpp::run::cpp::CppBuildConfig xpp::run::cpp::json_to_cpp_build_info(const Json::
     if (build_config.use_pch_header)
     {
         build_config.pch_header = pch_v.asString();
+    }
+
+    // Additional compiler args
+    const Json::Value compiler_args_v = config.get("compiler_args", Json::nullValue);
+    if (compiler_args_v != Json::nullValue && compiler_args_v.isArray())
+    {
+        for (auto it = compiler_args_v.begin(); it != compiler_args_v.end(); ++it)
+        {
+            if (it->isString())
+            {
+                build_config.compiler_args.push_back(it->asString());
+            }
+        }
+    }
+
+    // Additional linker args
+    const Json::Value linker_args_v = config.get("linker_args", Json::nullValue);
+    if (linker_args_v != Json::nullValue && linker_args_v.isArray())
+    {
+        for (auto it = linker_args_v.begin(); it != linker_args_v.end(); ++it)
+        {
+            if (it->isString())
+            {
+                build_config.linker_args.push_back(it->asString());
+            }
+        }
     }
 
     return build_config;

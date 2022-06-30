@@ -18,7 +18,7 @@
 /app/java/java_test.jar
 /app/java/java_obj
 /app/cpp/obj
+/app/cpp/cpp_test.pdb
 
 # Java jdk 
 /app/jdk
-

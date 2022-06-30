@@ -63,6 +63,15 @@ namespace xpp::run::cpp
         std_strict
     };
 
+    // Type of output
+    enum class OutputType : uint8_t
+    {
+        ConsoleApp,
+        NativeApp,
+        StaticLib,
+        DynamicLib,
+    };
+
     // General cpp build configuration
     struct CppBuildConfig
     {
@@ -72,7 +81,13 @@ namespace xpp::run::cpp
 
         // Output
         std::filesystem::path intermediate_dir;
-        
+        std::filesystem::path output_file;
+        OutputType output_type;
+
+        // Library linking
+        std::vector<std::filesystem::path> lib_dirs;
+        std::vector<std::string> lib_links;
+
         // Defined C++ preproc macros
         std::vector<std::string> preprocessor_macros;
 
@@ -100,6 +115,9 @@ namespace xpp::run::cpp
         OptimizationMode optimization_mode = OptimizationMode::none;
         bool enable_rtti = true;
 
+        // Additional args
+        std::vector<std::string> compiler_args;
+        std::vector<std::string> linker_args;
     };
 
     // Parses a json configuration to the correct build configuration

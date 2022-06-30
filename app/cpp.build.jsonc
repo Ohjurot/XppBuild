@@ -24,6 +24,10 @@
             "MY_OFF=1.2"
         ],
 
+        // Output filename
+        "output": "cpp/cpp_test.exe",
+        "output_type": "app\\console", // app\console, app\native, lib\static, lib\dynamic
+
         // Enables debugging
         "debug_build": false,
 
@@ -32,7 +36,7 @@
             // Architecture
             "architecture": "x64", // x32, x64
             // Enabled SIMD code generation
-            "enable_simd": null, // IA32 (x32), SSE (x32), SSE2 (x32), AVX (x32, x64), AVX2 (x32, x64), AVX512 (x32, x64)
+            "enable_simd": "AVX2", // IA32 (x32), SSE (x32), SSE2 (x32), AVX (x32, x64), AVX2 (x32, x64), AVX512 (x32, x64)
             // Exception behaviour
             "exception": "std", // none, std (Std C++), std_strict (Strict STD C++)
             // Floating-point model
@@ -58,14 +62,55 @@
             "coroutine": false,
             // Enabled C++ modules
             "modules": false
-        } 
+        },
+
+        // Path for existing library's
+        /*
+        "lib_path": [
+            "",
+            ""
+        ],
+        */
+        
+        // Additional library's links
+        "lib_links": [
+            "ole32.lib",
+            "dbgeng.lib",
+            "bcrypt.lib",
+            "kernel32.lib",
+            "user32.lib",
+            "gdi32.lib",
+            "winspool.lib",
+            "comdlg32.lib",
+            "advapi32.lib",
+            "shell32.lib",
+            "oleaut32.lib",
+            "uuid.lib",
+            "odbc32.lib",
+            "odbccp32.lib"
+        ]
+
+        // Additional compiler args
+        /*
+        "compiler_args": [
+            ""
+        ],
+        */
+
+        // Additional linker args
+        /*
+        "linker_args": [
+            ""
+        ]
+        */
     },
     
     // MSVC Specific behavior
     "msvc": {
         // Path to the MSVC toolchain
         "toolchain" : "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.29.30133",
-        "win_sdk": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22567.0",
+        "win_sdk_dir": "C:\\Program Files (x86)\\Windows Kits\\10",
+        "win_sdk_version": "10.0.22567.0",
 
         // UWP Build
         "build_for_uwp": false,
